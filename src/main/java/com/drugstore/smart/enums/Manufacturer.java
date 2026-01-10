@@ -23,13 +23,12 @@ public enum Manufacturer {
         this.displayName = displayName;
     }
 
-    // Utilitário para converter código do banco para enum
     public static Manufacturer fromCode(int code) {
         for (Manufacturer m : Manufacturer.values()) {
             if (m.getCode() == code) {
                 return m;
             }
         }
-        throw new IllegalArgumentException("Código inválido para Manufacturer: " + code);
+        throw new IllegalArgumentException("Invalid code for Manufacturer: " + code);
     }
 }

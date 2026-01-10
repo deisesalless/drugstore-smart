@@ -26,7 +26,7 @@ public enum MedicineForm {
                 return form;
             }
         }
-        throw new IllegalArgumentException("Código inválido para MedicineForm: " + code);
+        throw new IllegalArgumentException("Invalid code for MedicineForm: " + code);
     }
 }
 
