@@ -4,10 +4,10 @@ services:
     container_name: mysql-drugstore-smart
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: drugstore_db
       MYSQL_USER: drugstore_user
       MYSQL_PASSWORD: drugstore_pass
+      MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
     volumes:

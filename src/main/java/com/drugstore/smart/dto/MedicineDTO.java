@@ -6,14 +6,15 @@ import com.drugstore.smart.enums.MedicineForm;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public record MedicineDTO(
-    String name,
-    String dosage,
-    MedicineForm form,
-    Manufacturer manufacturer,
-    LocalDate expirationDate,
-    BigDecimal price,
-    Integer quantityInStock,
-    String description
+public record MedicineResponseDTO(
+        Integer id,
+        String name,
+        String dosage,
+        MedicineForm form,
+        Manufacturer manufacturer,
+        LocalDate expirationDate,
+        BigDecimal price,
+        Integer quantityInStock,
+        String description
 ) {
 }
