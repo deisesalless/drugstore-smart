@@ -15,7 +15,8 @@ import java.time.LocalDate;
 @Table
 public class Medicine {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String dosage;
