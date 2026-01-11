@@ -6,7 +6,7 @@ import com.drugstore.smart.enums.MedicineForm;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public record MedicineRequestDTO(
+public record MedicineCreateDTO(
     String name,
     String dosage,
     MedicineForm form,
