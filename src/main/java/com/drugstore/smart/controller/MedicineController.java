@@ -1,17 +1,36 @@
 package com.drugstore.smart.controller;
 
+import com.drugstore.smart.dto.MedicineCreateDTO;
 import com.drugstore.smart.dto.MedicineDTO;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.drugstore.smart.entity.Medicine;
+import com.drugstore.smart.service.MedicineService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/remedios")
+@RequiredArgsConstructor
 public class MedicineController {
 
+    private final MedicineService service;
+
+    @GetMapping
+    public List<Medicine> findAll() {
+        return service.getAllMedicines();
+    }
+
     @PostMapping
-    public void saveMedicine(@RequestBody MedicineDTO json) {
-        System.out.println(json);
+    public ResponseEntity<MedicineDTO> save(@RequestBody MedicineCreateDTO dto) {
+        MedicineDTO newMedicine = service.save(dto);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(newMedicine.id()).toUri();
+
+        return ResponseEntity.created(location).body(newMedicine);
     }
 }

@@ -19,7 +19,6 @@ public enum MedicineForm {
         this.code = code;
     }
 
-    // Utilitário para converter código do banco para enum
     public static MedicineForm fromCode(int code) {
         for (MedicineForm form : MedicineForm.values()) {
             if (form.getCode() == code) {
