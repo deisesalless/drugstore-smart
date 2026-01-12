@@ -2,8 +2,8 @@ package com.drugstore.smart.controller;
 
 import com.drugstore.smart.dto.MedicineCreateDTO;
 import com.drugstore.smart.dto.MedicineDTO;
-import com.drugstore.smart.entity.Medicine;
 import com.drugstore.smart.service.MedicineService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,12 +20,12 @@ public class MedicineController {
     private final MedicineService service;
 
     @GetMapping
-    public List<Medicine> findAll() {
-        return service.getAllMedicines();
+    public ResponseEntity<List<MedicineDTO>> findAll() {
+        return ResponseEntity.ok(service.getAllMedicines());
     }
 
     @PostMapping
-    public ResponseEntity<MedicineDTO> save(@RequestBody MedicineCreateDTO dto) {
+    public ResponseEntity<MedicineDTO> save(@RequestBody @Valid MedicineCreateDTO dto) {
         MedicineDTO newMedicine = service.save(dto);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")

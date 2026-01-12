@@ -7,6 +7,7 @@ import com.drugstore.smart.mapper.MedicineMapper;
 import com.drugstore.smart.repository.MedicineRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,10 +17,11 @@ public class MedicineService {
     private final MedicineRepository repository;
     private final MedicineMapper mapper;
 
-    public List<Medicine> getAllMedicines() {
-        return repository.findAll();
+    public List<MedicineDTO> getAllMedicines() {
+        return mapper.toDTO(repository.findAll());
     }
-
+    
+    @Transactional
     public MedicineDTO save(MedicineCreateDTO dto) {
         Medicine newMedicine = mapper.toEntity(dto);
         return mapper.toDTO(repository.save(newMedicine));
