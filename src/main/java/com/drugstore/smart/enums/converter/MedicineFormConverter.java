@@ -1,4 +1,4 @@
-package com.drugstore.smart.persistence.converter;
+package com.drugstore.smart.enums.converter;
 
 import com.drugstore.smart.enums.MedicineForm;
 import jakarta.persistence.AttributeConverter;

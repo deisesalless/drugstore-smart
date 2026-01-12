@@ -1,4 +1,4 @@
-package com.drugstore.smart.persistence.converter;
+package com.drugstore.smart.enums.converter;
 
 import com.drugstore.smart.enums.Manufacturer;
 import jakarta.persistence.AttributeConverter;

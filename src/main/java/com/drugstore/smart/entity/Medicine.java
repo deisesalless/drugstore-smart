@@ -2,8 +2,8 @@ package com.drugstore.smart.entity;
 
 import com.drugstore.smart.enums.Manufacturer;
 import com.drugstore.smart.enums.MedicineForm;
-import com.drugstore.smart.persistence.converter.ManufacturerConverter;
-import com.drugstore.smart.persistence.converter.MedicineFormConverter;
+import com.drugstore.smart.enums.converter.ManufacturerConverter;
+import com.drugstore.smart.enums.converter.MedicineFormConverter;
 import jakarta.persistence.*;
 import lombok.Data;
 
