@@ -24,6 +24,11 @@ public class MedicineController {
         return ResponseEntity.ok(service.getAllMedicines());
     }
 
+    @GetMapping("/all/active")
+    public ResponseEntity<List<MedicineDTO>> findAllActive() {
+        return ResponseEntity.ok(service.getAllActiveMedicines());
+    }
+
     @PostMapping
     public ResponseEntity<MedicineDTO> save(@RequestBody @Valid MedicineCreateDTO dto) {
         MedicineDTO newMedicine = service.save(dto);
@@ -37,5 +42,17 @@ public class MedicineController {
     @PatchMapping
     public ResponseEntity<MedicineDTO> update(@RequestBody @Valid MedicineDTO dto) {
         return ResponseEntity.ok(service.update(dto));
+    }
+
+    @DeleteMapping("desable/{id}")
+    public ResponseEntity<Boolean> desable(@PathVariable Integer id) {
+        service.desableMedicine(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("enable/{id}")
+    public ResponseEntity<Boolean> enable(@PathVariable Integer id) {
+        service.enableMedicine(id);
+        return ResponseEntity.noContent().build();
     }
 }

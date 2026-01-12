@@ -18,6 +18,7 @@ public record MedicineDTO(
         LocalDate expirationDate,
         @NotNull(message = "Price is required") BigDecimal price,
         Integer quantityInStock,
-        @NotBlank(message = "Description is required") String description
+        @NotBlank(message = "Description is required") String description,
+        boolean isActive
 ) {
 }

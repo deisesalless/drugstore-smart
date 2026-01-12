@@ -20,6 +20,10 @@ public class MedicineService {
     public List<MedicineDTO> getAllMedicines() {
         return mapper.toDTO(repository.findAll());
     }
+
+    public List<MedicineDTO> getAllActiveMedicines() {
+        return mapper.toDTO(repository.findByIsActiveTrue());
+    }
     
     @Transactional
     public MedicineDTO save(MedicineCreateDTO dto) {
@@ -37,5 +41,19 @@ public class MedicineService {
         Medicine entity = getMedicineById(dto.id());
         mapper.updateFromDto(dto, entity);
         return mapper.toDTO(repository.save(entity));
+    }
+
+    @Transactional
+    public void desableMedicine(Integer id) {
+        Medicine medicine = getMedicineById(id);
+        medicine.setActive(false);
+        repository.save(medicine);
+    }
+
+    @Transactional
+    public void enableMedicine(Integer id) {
+        Medicine medicine = getMedicineById(id);
+        medicine.setActive(true);
+        repository.save(medicine);
     }
 }

@@ -1,0 +1,1 @@
+ALTER TABLE medicine CHANGE `isActive` `is_active` BOOLEAN NOT NULL;
