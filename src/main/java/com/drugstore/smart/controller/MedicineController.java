@@ -33,4 +33,9 @@ public class MedicineController {
 
         return ResponseEntity.created(location).body(newMedicine);
     }
+
+    @PatchMapping
+    public ResponseEntity<MedicineDTO> update(@RequestBody @Valid MedicineDTO dto) {
+        return ResponseEntity.ok(service.update(dto));
+    }
 }

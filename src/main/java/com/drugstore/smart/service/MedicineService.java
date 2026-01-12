@@ -26,4 +26,16 @@ public class MedicineService {
         Medicine newMedicine = mapper.toEntity(dto);
         return mapper.toDTO(repository.save(newMedicine));
     }
+
+    private Medicine getMedicineById(Integer id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Medicine not found with id: " + id));
+    }
+
+    @Transactional
+    public MedicineDTO update(MedicineDTO dto) {
+        Medicine entity = getMedicineById(dto.id());
+        mapper.updateFromDto(dto, entity);
+        return mapper.toDTO(repository.save(entity));
+    }
 }
