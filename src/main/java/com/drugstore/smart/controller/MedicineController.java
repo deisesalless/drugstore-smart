@@ -13,7 +13,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/remedios")
+@RequestMapping("/medicines")
 @RequiredArgsConstructor
 public class MedicineController {
 
@@ -44,14 +44,14 @@ public class MedicineController {
         return ResponseEntity.ok(service.update(dto));
     }
 
-    @DeleteMapping("desable/{id}")
-    public ResponseEntity<Boolean> desable(@PathVariable Integer id) {
-        service.desableMedicine(id);
+    @DeleteMapping("/disable/{id}")
+    public ResponseEntity<Void> disable(@PathVariable Integer id) {
+        service.disableMedicine(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping("enable/{id}")
-    public ResponseEntity<Boolean> enable(@PathVariable Integer id) {
+    @PatchMapping("/enable/{id}")
+    public ResponseEntity<Void> enable(@PathVariable Integer id) {
         service.enableMedicine(id);
         return ResponseEntity.noContent().build();
     }

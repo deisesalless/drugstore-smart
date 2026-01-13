@@ -44,16 +44,16 @@ public class MedicineService {
     }
 
     @Transactional
-    public void desableMedicine(Integer id) {
+    public void disableMedicine(Integer id) {
         Medicine medicine = getMedicineById(id);
-        medicine.setActive(false);
+        medicine.setIsActive(false);
         repository.save(medicine);
     }
 
     @Transactional
     public void enableMedicine(Integer id) {
         Medicine medicine = getMedicineById(id);
-        medicine.setActive(true);
+        medicine.setIsActive(true);
         repository.save(medicine);
     }
 }

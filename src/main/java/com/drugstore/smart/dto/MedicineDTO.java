@@ -19,6 +19,6 @@ public record MedicineDTO(
         @NotNull(message = "Price is required") BigDecimal price,
         Integer quantityInStock,
         @NotBlank(message = "Description is required") String description,
-        boolean isActive
+        Boolean isActive
 ) {
 }

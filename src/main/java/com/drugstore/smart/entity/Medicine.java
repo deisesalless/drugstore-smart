@@ -31,5 +31,7 @@ public class Medicine {
     private BigDecimal price;
     private Integer quantityInStock;
     private String description;
-    private boolean isActive;
+
+    @Column(nullable = false)
+    private Boolean isActive = true;
 }
