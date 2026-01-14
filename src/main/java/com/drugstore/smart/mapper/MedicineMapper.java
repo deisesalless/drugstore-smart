@@ -19,5 +19,5 @@ public interface MedicineMapper {
     List<MedicineDTO> toDTO(List<Medicine> entities);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateFromDto(MedicineDTO dto, @MappingTarget Medicine entity);
+    void updateFromDto(MedicineCreateDTO dto, @MappingTarget Medicine entity);
 }

@@ -31,28 +31,35 @@ public class MedicineService {
         return mapper.toDTO(repository.save(newMedicine));
     }
 
-    private Medicine getMedicineById(Integer id) {
+    public MedicineDTO getMedicineById(Integer id) {
+        var medicine = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Medicine not found with id: " + id));
+
+        return mapper.toDTO(medicine);
+    }
+
+    private Medicine getById(Integer id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Medicine not found with id: " + id));
     }
 
     @Transactional
-    public MedicineDTO update(MedicineDTO dto) {
-        Medicine entity = getMedicineById(dto.id());
+    public MedicineDTO update(Integer id, MedicineCreateDTO dto) {
+        Medicine entity = getById(id);
         mapper.updateFromDto(dto, entity);
         return mapper.toDTO(repository.save(entity));
     }
 
     @Transactional
     public void disableMedicine(Integer id) {
-        Medicine medicine = getMedicineById(id);
+        Medicine medicine = getById(id);
         medicine.setIsActive(false);
         repository.save(medicine);
     }
 
     @Transactional
     public void enableMedicine(Integer id) {
-        Medicine medicine = getMedicineById(id);
+        Medicine medicine = getById(id);
         medicine.setIsActive(true);
         repository.save(medicine);
     }
