@@ -45,9 +45,11 @@ public class MedicineService {
 
     @Transactional
     public MedicineDTO update(Integer id, MedicineCreateDTO dto) {
-        Medicine entity = getById(id);
-        mapper.updateFromDto(dto, entity);
-        return mapper.toDTO(repository.save(entity));
+        Medicine entityFound = getById(id);
+        Medicine entityUpdate = mapper.toEntity(dto);
+        entityUpdate.setId(entityFound.getId());
+        entityUpdate.setIsActive(entityFound.getIsActive());
+        return mapper.toDTO(repository.save(entityUpdate));
     }
 
     @Transactional
