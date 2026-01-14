@@ -3,6 +3,7 @@ package com.drugstore.smart.service;
 import com.drugstore.smart.dto.MedicineCreateDTO;
 import com.drugstore.smart.dto.MedicineDTO;
 import com.drugstore.smart.entity.Medicine;
+import com.drugstore.smart.exceptions.ResourceNotFoundException;
 import com.drugstore.smart.mapper.MedicineMapper;
 import com.drugstore.smart.repository.MedicineRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,14 +34,14 @@ public class MedicineService {
 
     public MedicineDTO getMedicineById(Integer id) {
         var medicine = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Medicine not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Medicine not found with id: " + id));
 
         return mapper.toDTO(medicine);
     }
 
     private Medicine getById(Integer id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Medicine not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Medicine not found with id: " + id));
     }
 
     @Transactional
