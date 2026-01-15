@@ -11,8 +11,8 @@ import java.time.LocalDate;
 public record MedicineCreateDTO(
     @NotBlank(message = "Name is required") String name,
     @NotBlank(message = "Dosage is required") String dosage,
-    @Enumerated MedicineForm form,
-    @Enumerated Manufacturer manufacturer,
+    @Enumerated @NotNull(message = "Form is required") MedicineForm form,
+    @Enumerated @NotNull(message = "Manufacturer is required") Manufacturer manufacturer,
     @Future(message = "Expiration date must be in the future") LocalDate expirationDate,
     @NotNull(message = "Price is required") BigDecimal price,
     @Min(value = 1, message = "Minimium quantity is 1") Integer quantityInStock,

@@ -67,7 +67,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers,
                                                                   HttpStatusCode status, WebRequest request) {
 
-        log.error("Bac request error: ", ex);
+        log.error("Bad request error: ", ex);
         Map<String, String> fieldErrors = new HashMap<>();
 
         ex.getBindingResult().getFieldErrors()
